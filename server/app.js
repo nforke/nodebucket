@@ -1,3 +1,12 @@
+/*
+=============================================================
+; Title:  app.js
+; Author: Professor Krasso
+; Modified By: Nicole Forke
+; Date:   25 September 2020
+; Description: Server file for nodebucket
+;============================================================
+*/
 /**
  * Require statements
  */
@@ -7,6 +16,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
+const Employee = require('./models/employee'); // get the employee model from the models collection
 
 /**
  * App configurations
@@ -24,7 +34,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
 const port = 3000; // server port
 
 // TODO: This line will need to be replaced with your actual database connection string
-const conn = 'mongodb+srv://superadmin:s3cret@cluster0-lujih.mongodb.net/nodebucket?retryWrites=true&w=majority';
+const conn = 'mongodb+srv://nodebucket:ohBuckets@buwebdev-cluster-1.bznkj.mongodb.net/nodebucket';
 
 /**
  * Database connection
@@ -32,7 +42,8 @@ const conn = 'mongodb+srv://superadmin:s3cret@cluster0-lujih.mongodb.net/nodebuc
 mongoose.connect(conn, {
   promiseLibrary: require('bluebird'),
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useCreateIndex: true
 }).then(() => {
   console.debug(`Connection to the database instance was successful`);
 }).catch(err => {
@@ -42,6 +53,36 @@ mongoose.connect(conn, {
 /**
  * API(s) go here...
  */
+
+// FindEmployeeById API
+app.get('/api/employees/:empId', async(req, res) =>{
+
+  try {
+// look in employees collection using this value
+    Employee.findOne({ 'empId': req.params.empId }, function(err, employee) {
+      
+      // database level error message
+      if (err) {
+        console.log(err);
+        res.status(500).send({
+          'message': 'Internal server error!'
+        })
+      } else { // no error return data
+        console.log(employee);
+        res.json(employee);
+      }
+    })
+
+
+  } catch (e) { // catch any potential errors
+    console.log(e);
+
+    res.status(500).send({
+      'message': 'Internal server error!'
+    })
+  }
+})
+// end FindEmployeeById API
 
 /**
  * Create and start server

@@ -1,3 +1,14 @@
+/*
+=============================================================
+; Title:  nodebucket
+; Author: Professor Krasso
+; Modified By: Nicole Forke
+; Date:   25 September 2020
+; Description: App Module
+;============================================================
+*/
+
+// import components and modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -13,13 +24,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SigninComponent } from './pages/signin/signin.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     BaseLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +48,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatCardModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
