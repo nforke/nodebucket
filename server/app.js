@@ -3,7 +3,7 @@
 ; Title:  app.js
 ; Author: Professor Krasso
 ; Modified By: Nicole Forke
-; Date:   25 September 2020
+; Date:   30 September 2020
 ; Description: Server file for nodebucket
 ;============================================================
 */
@@ -17,6 +17,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const Employee = require('./models/employee'); // get the employee model from the models collection
+const EmployeeApi = require('./routes/employee-api');
 
 /**
  * App configurations
@@ -54,35 +55,7 @@ mongoose.connect(conn, {
  * API(s) go here...
  */
 
-// FindEmployeeById API
-app.get('/api/employees/:empId', async(req, res) =>{
-
-  try {
-// look in employees collection using this value
-    Employee.findOne({ 'empId': req.params.empId }, function(err, employee) {
-      
-      // database level error message
-      if (err) {
-        console.log(err);
-        res.status(500).send({
-          'message': 'Internal server error!'
-        })
-      } else { // no error return data
-        console.log(employee);
-        res.json(employee);
-      }
-    })
-
-
-  } catch (e) { // catch any potential errors
-    console.log(e);
-
-    res.status(500).send({
-      'message': 'Internal server error!'
-    })
-  }
-})
-// end FindEmployeeById API
+ app.use('/api/employees', EmployeeApi);
 
 /**
  * Create and start server
