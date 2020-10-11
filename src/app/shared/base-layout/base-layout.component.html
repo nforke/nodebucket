@@ -2,14 +2,15 @@
 
     <!-- navigation -->
     <nav fxFlex>
-      <mat-toolbar>
+      <mat-toolbar color="primary">
         <!-- navbar container -->
         <div class="navbar-container">
           <!-- logo -->
-          <button class="logo" routerLink="/" mat-button>nodebucket</button>
+          <img src="../../../assets/nodebucketLogo.png" />
   
           <button class="navbar-link" routerLink="/" mat-button>Home</button>
-          <button class="navbar-link" mat-button>About</button>
+          <button class="navbar-link" routerLink="/about" mat-button>About</button>
+          <button class="navbar-link" routerLink="/signin" mat-button (click)="signOut()">Sign Out</button>
         </div>
   
       </mat-toolbar>
@@ -25,7 +26,7 @@
     <!-- footer -->
     <div fxFlex>
       <footer class="footer">
-        <mat-toolbar class="footer-content">
+        <mat-toolbar color="primary" class="footer-content">
           <p>
             &copy; {{year | date: 'yyyy'}} - nodebucket - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
           </p>

@@ -69,7 +69,7 @@ router.get('/:empId', async(req, res) =>{
             if (err) {
                 console.log(err);
 
-                const mongoDbErrorResponse = new ErrorResponse('500', 'Internal server error', employee);
+                const mongoDbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
 
                 res.status(500).send(mongoDbErrorResponse.toObject())
             } else {
@@ -227,13 +227,13 @@ router.get('/:empId', async(req, res) =>{
                             if (err) {
                                 console.log(err);
 
-                                const deleteTaskOnSaveMongoDbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                                const deleteToDoItemOnSaveMongoDbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
 
-                                res.status(500).send(deleteTaskOnSaveMongoDbErrorResponse.toObject());
+                                res.status(500).send(deleteToDoItemOnSaveMongoDbErrorResponse.toObject());
                             } else {
                                 console.log(updatedTodoItemEmployee);
 
-                                const deleteToDoItemSuccessresponse = new BaseResponse('200', 'Removed item from the todo list', updatedTodoItemEmployee);
+                                const deleteToDoItemSuccessResponse = new BaseResponse('200', 'Removed item from the todo list', updatedTodoItemEmployee);
 
                                 res.json(deleteToDoItemSuccessResponse.toObject());
                             }
@@ -253,13 +253,13 @@ router.get('/:empId', async(req, res) =>{
 
                                 const deleteDoneItemSuccessResponse = new BaseResponse('200', 'Removed item from the done list', updatedDoneItemEmployee);
 
-                                res.json(updatedDoneItemEmployee.toObject());
+                                res.json(deleteDoneItemSuccessResponse.toObject());
                             }
                         })
                     } else {
                         console.log('Invalid task Id');
 
-                        const deleteTaskNotFoundReponse = new ErrorResponse('200', 'Unable to locate the requested task', null);
+                        const deleteTaskNotFoundResponse = new ErrorResponse('200', 'Unable to locate the requested task', null);
 
                         res.status(200).send(deleteTaskNotFoundResponse.toObject());
                     }

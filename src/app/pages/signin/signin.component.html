@@ -1,21 +1,21 @@
 <div fxLayout="column">
 
-    <div fxFlex *ngIf="error">
+    <div class="msg-error" fxFlex *ngIf="error">
         {{ error }}
     </div>
 
-    <mat-card fxFlex>
+    <mat-card fxFlex class="mat-elevation-z8 signin-container">
         <mat-card-title>
             Employee Sign-In Page
         </mat-card-title>
 
         <mat-card-subtitle>
-            You must enter a valid employeeID to proceed.
+            You must enter a valid employeeID between 1007-1012 to proceed.
         </mat-card-subtitle>
 
         <form [formGroup]="form" (ngSubmit)="login(); form.reset();">
             <mat-card-content>
-                <mat-form-field>
+                <mat-form-field fxFlex appearance="fill">
                     <input matInput
                         [formControl]="form.controls['empId']"
                         placeholder="Employee ID" />

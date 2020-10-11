@@ -3,7 +3,7 @@
 ; Title:  nodebucket
 ; Author: Professor Krasso
 ; Modified By: Nicole Forke
-; Date:   25 September 2020
+; Date:   05 October 2020
 ; Description: App Module
 ;============================================================
 */
@@ -28,6 +28,14 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AboutComponent } from './pages/about/about.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CreateTaskDialogComponent } from './shared/create-task-dialog/create-task-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -35,7 +43,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HomeComponent,
     BaseLayoutComponent,
     AuthLayoutComponent,
-    SigninComponent
+    SigninComponent,
+    AboutComponent,
+    NotFoundComponent,
+    CreateTaskDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +61,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSnackBarModule,
+    MatDividerModule,
+    DragDropModule,
+    MatDialogModule,
+    MatMenuModule
   ],
-  providers: [],
+  providers: [
+    // CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
