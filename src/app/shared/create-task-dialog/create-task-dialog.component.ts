@@ -33,11 +33,11 @@ export class CreateTaskDialogComponent implements OnInit {
       text: [null, Validators.compose([Validators.required])]
     })
   }
-
+  // function to create new task
   createTask() {
     this.dialogRef.close(this.taskForm.value);
   }
-
+  // function to cancel submission of creating a new task
   cancel() {
     this.dialogRef.close();
   }

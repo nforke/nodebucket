@@ -30,14 +30,14 @@ export class HomeComponent implements OnInit {
   // tasks: any;
   todo: Item[];
   done: Item[];
-  employee: Employee;
+  employee: Employee; // calls the employee interface
 
   empId: string;
 
   constructor(private taskService: TaskService, private cookieService: CookieService, private dialog: MatDialog) {
 
     this.empId = this.cookieService.get('session_user'); // get the active session user
-
+    // calls the task service
     this.taskService.findAllTasks(this.empId).subscribe(res => {
       console.log('--Server response from findAlltasks--');
       console.log(res);
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
       this.updateTaskList(this.empId, this.todo, this.done);
     }
   }
-
+  // calls the api and update task list
   private updateTaskList(empId: string, todo: Item[], done: Item[]): void {
     this.taskService.updateTask(empId, todo, done).subscribe(res => {
       this.employee = res.data;
@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
       this.done = this.employee.done;
     })
   }
-
+  // opens a dialog for creating a new task
   openCreateTaskDialog() {
     const dialogRef = this.dialog.open(CreateTaskDialogComponent, {
       disableClose: true

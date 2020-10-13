@@ -2,9 +2,9 @@
 
   <div fxFlex>
   <h1 class="title">
-    Welcome to WEB 450's - nodebucket Project <br />
+    Welcome to Nodebucket<br />
     <span class="subtitle">
-      Pay close attention to the requirements, double and triple check the files for code attribution, and do not wait unitl the last minute to begin working on each item.
+      The only app you need to organize all of your tasks in one place.
     </span>
   </h1>
 </div>
@@ -38,7 +38,7 @@
                  [cdkDropListConnectedTo]="[doneList]"
                  (cdkDropListDropped)="drop($event)">
 
-              <!-- loop over the content -->
+              <!-- loop/iterate over the array -->
                  <div *ngFor="let item of todo" cdkDrag>
                    
                     <mat-card class="mat-elevation-z0 task-card">
