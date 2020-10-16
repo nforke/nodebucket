@@ -15,11 +15,12 @@
   
   .main-content {
     padding-left: 30px;
+    height: 800px;
+    margin-bottom: 80px;
   }
   
   .footer {
     bottom: 0;
-    position: absolute;
     width: 100%;
   }
   
