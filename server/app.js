@@ -18,6 +18,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Employee = require('./models/employee'); // get the employee model from the models collection
 const EmployeeApi = require('./routes/employee-api');
+const { env } = require('process');
 
 /**
  * App configurations
@@ -32,7 +33,11 @@ app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
 /**
  * Variables
  */
+<<<<<<< HEAD
 const port = process.env.PORT || 3000; // server port
+=======
+const port = env.process.PORT || 3000; // server port for application
+>>>>>>> dev-branch
 
 // TODO: This line will need to be replaced with your actual database connection string
 const conn = 'mongodb+srv://nodebucket:ohBuckets@buwebdev-cluster-1.bznkj.mongodb.net/nodebucket';
