@@ -18,7 +18,6 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Employee = require('./models/employee'); // get the employee model from the models collection
 const EmployeeApi = require('./routes/employee-api');
-const { env } = require('process');
 
 /**
  * App configurations
